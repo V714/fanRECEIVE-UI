@@ -31,7 +31,7 @@ function ForgotPass() {
           handleChange={(e) => setForgotEmail(e.value)}
         />
         <button className="buttonPrimary" type="submit" name="loginButton">
-          Login
+          Reset Password
         </button>
       </form>
     </>
