@@ -6,6 +6,8 @@ import ModalContainer from "./modals/ModalContainer";
 import { isLogged } from "./utils/logged";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
+import Matches from "./pages/Matches";
+import YourBids from "./pages/YourBids";
 
 interface StoreInterface {
   logged: boolean;
@@ -41,8 +43,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/home" element={<Home />} />
-            {/*  <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
+            <Route path="/matches" element={<Matches />} />
+            <Route path="/your-bids" element={<YourBids />} />
           </Routes>
           <ModalContainer />
         </BrowserRouter>

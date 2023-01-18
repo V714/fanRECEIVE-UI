@@ -19,7 +19,7 @@ function Container() {
   return (
     <>
       <nav id="topBar">
-        <div id="logo">
+        <div id="logo" onClick={() => navigate("/")}>
           Fan<p className="fontGradient">RECEIVE</p>
         </div>
         <ul>

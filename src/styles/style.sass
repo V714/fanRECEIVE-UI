@@ -73,7 +73,7 @@ a, button, ul, li, input, p, b
                 right: 40px
                 height: 40px
         .liAlternative
-            transition: all .1s ease-in-out
+            transition: all .2s ease-in-out
             background: linear-gradient(92.67deg, #00ff574a 2.2%, #1155c44a 65.81%, #00d4ff4a 98.82%)
 
 .buttonPrimary
@@ -98,6 +98,7 @@ a, button, ul, li, input, p, b
     margin-top: 50px
     font-size: 0.8rem
     background: linear-gradient(90.44deg, #00FF57 7.89%, #1155C4 31.7%, #00D4FF 50%)
+    background-repeat: repeat-x
     border-radius: 12px
     padding: 4px
     text-align: center
@@ -109,8 +110,7 @@ a, button, ul, li, input, p, b
     transition: all .5s ease-in-out
     background-size: 200% 200%
     &:hover
-        transition: all .7s ease-in-out
-        background-position-x: 30%
+        animation: buttonAnimationBorder 3s linear infinite
 
     .buttonAlternativeBackground
         background-color: $modalBgColor
@@ -123,14 +123,15 @@ a, button, ul, li, input, p, b
         .buttonAlternative
             padding: 7px
             background: -webkit-linear-gradient(180deg, #42D500 7.85%, #035EF3 26.91%, #00D4FF 42.63%)
+            background-repeat: repeat-x
             -webkit-background-clip: text
             -webkit-text-fill-color: transparent
             background-position-x: 100%
             transition: all .5s ease-in-out
             background-size: 200% 200%
             &:hover
+                animation: buttonAnimationText 3s linear infinite
                 transition: all .7s ease-in-out
-                background-position-x: -80%
                 filter: brightness(1.2)
 
 .lineGradient
@@ -265,3 +266,15 @@ a, button, ul, li, input, p, b
     img
         width: 50px
         height: 50px
+
+@keyframes buttonAnimationBorder
+    0%
+        background-position-x: 0%
+    100%
+        background-position-x: 200%
+
+@keyframes buttonAnimationText
+    0%
+        background-position-x: 100%
+    100%
+        background-position-x: -100%
