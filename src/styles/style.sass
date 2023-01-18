@@ -1,0 +1,267 @@
+
+$modalBgColor: #080A23
+
+a, button, ul, li, input, p, b
+    all: unset
+
+#bgGradient
+    width: 100%
+    height: 100vh
+    background: linear-gradient(107.56deg, #020024 0%, #1155C4 69.79%, #00D4FF 100%)
+    position: absolute
+    z-index: -7
+
+#bgImage
+    width: 100%
+    height: 100vh
+    background: url('../imgs/bgblur.png')
+    background-size: cover
+    position: absolute
+    opacity: 0.3
+    z-index: -6
+
+#bgPlayer
+    height: 800px
+    position: absolute
+    right: 0
+    bottom: 0
+    filter: hue-rotate(-10deg)
+    z-index: -5
+
+#topBar
+    display: flex
+    justify-content: space-between
+    position: absolute
+    top: 0
+    height: 70px
+    width: 100%
+    background: linear-gradient(-90.02deg, #02002414 0.67%, #f155c414 50.28%, #09d4ff14 76.27%)
+    backdrop-filter: blur(120px)
+    #logo
+        color: white
+        width: 300px
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        cursor: pointer
+
+    ul
+        display: flex
+        justify-content: flex-end
+        li
+            cursor: pointer
+            font-size: .7rem
+            font-weight: 300
+            color: white
+            padding: 0 40px
+            height: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+            position: relative
+            transition: all .1s ease-in-out
+            &:hover
+                transition: all .1s ease-in-out
+                background: #09d4ff24
+            &::before
+                position: relative
+                content: ''
+                background: #fff3
+                width: 5px
+                border-radius: 100%
+                right: 40px
+                height: 40px
+        .liAlternative
+            transition: all .1s ease-in-out
+            background: linear-gradient(92.67deg, #00ff574a 2.2%, #1155c44a 65.81%, #00d4ff4a 98.82%)
+
+.buttonPrimary
+    text-align: center
+    color: white
+    width: 100%
+    height: 70px
+    margin: 10px 0
+    font-size: 0.8rem
+    background: linear-gradient(90.44deg, #36701C 7.89%, #1155C4 31.7%, #00D4FF 50%)
+    border-radius: 12px
+    cursor: pointer
+    transition: all .2s ease-in-out
+    background-size: 200% 200%
+    &:hover
+        transition: all .3s ease-in-out
+        background-position-x: 30%
+
+.buttonAlternativeBorder
+    width: 100%
+    height: 70px
+    margin-top: 50px
+    font-size: 0.8rem
+    background: linear-gradient(90.44deg, #00FF57 7.89%, #1155C4 31.7%, #00D4FF 50%)
+    border-radius: 12px
+    padding: 4px
+    text-align: center
+    color: white
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    transition: all .5s ease-in-out
+    background-size: 200% 200%
+    &:hover
+        transition: all .7s ease-in-out
+        background-position-x: 30%
+
+    .buttonAlternativeBackground
+        background-color: $modalBgColor
+        width: 100%
+        height: 100%
+        border-radius: 12px
+        display: flex
+        justify-content: center
+        align-items: center
+        .buttonAlternative
+            padding: 7px
+            background: -webkit-linear-gradient(180deg, #42D500 7.85%, #035EF3 26.91%, #00D4FF 42.63%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-position-x: 100%
+            transition: all .5s ease-in-out
+            background-size: 200% 200%
+            &:hover
+                transition: all .7s ease-in-out
+                background-position-x: -80%
+                filter: brightness(1.2)
+
+.lineGradient
+    width: 100%
+    height: 3px
+    background: -webkit-linear-gradient(0deg, #020024 0%, #1155c4 36.91%, #00D4FF 50%)
+    transition: all 0.2s ease-in-out
+    background-size: 200% 50%
+
+.fontGradient
+    background: linear-gradient(145.72deg, #00FF57 50%, #00C4DF 67.55%, #1155C4 89.24%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.modal
+    overflow: hidden
+    background: $modalBgColor
+    position: relative
+    height: 100%
+    display: flex
+    justify-content: center
+    box-shadow: "0 0 30px 10px #0002"
+    color: white
+    .modalImageContainer
+        position: relative
+        width: 50%
+        height: 100%
+        color: white
+        img
+            width: 100%
+            height: 100%
+        .modalImageText
+            width: 100%
+            text-align: center
+            letter-spacing: 7px
+            font-size: 1.4rem
+            font-weight: 300
+            height: 100%
+            position: absolute
+            display: flex
+            flex-direction: column
+            justify-content: space-around
+            align-items: center
+            .modalImageB
+                font-size: 1.3rem
+                font-weight: 600
+            .modalImageTextTop
+                width: 100%
+            .modalImageTextBottom
+                width: 80%
+    .modalFormContainer
+        width: 50%
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        position: relative
+        .modalTitle
+            text-align: left
+            margin-bottom: 30px
+
+.inputText
+    margin: 10px 0
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: 100%
+    input
+        width: 100%
+        color: #fff
+        font-size: 0.6rem
+        padding: 5px
+        &:focus + .lineGradient
+            background-position-x: 50%
+            transition: all 0.2s ease-in-out
+
+.forgotPassButton
+    width: 100%
+    font-size: 0.5rem
+    font-weight: 300
+    text-align: center
+    cursor: pointer
+    &:hover
+        transform: scale(1.07)
+        transition: all 0.1s ease-in-out
+
+.ReactModal__Overlay
+    opacity: 0
+    transition: opacity 100ms ease-in-out
+
+.ReactModal__Overlay--after-open
+    opacity: 1
+
+.ReactModal__Overlay--before-close
+    opacity: 0
+
+.ReactModal__Content
+    transform: translate(-50%,100%) !important
+    transition: transform 400ms ease-in-out
+
+.ReactModal__Content--after-open
+    transform: translate(-50%,-50%) !important
+
+.ReactModal__Content--before-close
+    transform: translate(-50%,100%) !important
+
+.welcomeText
+    width: 700px
+    padding-left: 7%
+    gap: 20px
+    font-size: 1.4rem
+    font-weight: 500
+    height: 90vh
+    letter-spacing: 2px
+    color: white
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+.forgotBackArrow
+    cursor: pointer
+    width: 50px
+    height: 50px
+    position: absolute
+    left: 20px
+    top: 20px
+    transition: transform 100ms ease-in-out
+    &:hover
+        transition: transform 100ms ease-in-out
+        transform: scale(1.2)
+    img
+        width: 50px
+        height: 50px

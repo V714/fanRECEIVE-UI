@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "35b045c5-7143-49a3-af36-8694cc6d2c01",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterCustomer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"XYZ\",\r\n    \"first_name\": \"Test\",\r\n    \"last_name\": \"User\",\r\n    \"email\": \"XYZ@gmail.com\",\r\n    \"age\": 20,\r\n    \"city\": \"Cracow\",\r\n    \"password\": \"SamplePassword123\",\r\n    \"repeat_password\": \"SamplePassword123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateTokenPair",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"XYZ@gmail.com\",\r\n    \"password\": \"SamplePassword123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDA2ODg3MSwiaWF0IjoxNjczOTgyNDcxLCJqdGkiOiIyNjQyM2ZjOTE2ODE0MTI0YjNlNGI1Zjc4YmZkNTE0NSIsInVzZXJfaWQiOjl9.l9hv5IfhDNrEak_uL9nsf7M5E8yusLqQf3l6ioljKXU\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg5ODAwLCJpYXQiOjE2NzM5ODI0NzEsImp0aSI6ImNiNzM0MzZjZGM3ZTQ4YjBiYmY1NWI5OWJmMTUzZWFiIiwidXNlcl9pZCI6OX0.zyBFbw7tTAL26sb9NZDZ0CJ70-SOSxMH4N-Le4EeHdc\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/verify/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						"verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all available bids for matches",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg2MzI2LCJpYXQiOjE2NzM5NzkxMjYsImp0aSI6ImZhNTI3OTNmNTQ4NjQ1OGFhYTdkNTY4NmI1MjU4MWJjIiwidXNlcl9pZCI6OH0.bPAJKY7twUkx0qLWgSZ0iGl3jdZJHI3b0h7Wn1O9NJY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/bids/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"bids",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get sample match description",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg2MzI2LCJpYXQiOjE2NzM5NzkxMjYsImp0aSI6ImZhNTI3OTNmNTQ4NjQ1OGFhYTdkNTY4NmI1MjU4MWJjIiwidXNlcl9pZCI6OH0.bPAJKY7twUkx0qLWgSZ0iGl3jdZJHI3b0h7Wn1O9NJY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/match/1/description",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"1",
+						"description"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create bid for match",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg2MzI2LCJpYXQiOjE2NzM5NzkxMjYsImp0aSI6ImZhNTI3OTNmNTQ4NjQ1OGFhYTdkNTY4NmI1MjU4MWJjIiwidXNlcl9pZCI6OH0.bPAJKY7twUkx0qLWgSZ0iGl3jdZJHI3b0h7Wn1O9NJY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer\": 8,\r\n    \"bid\": 1,\r\n    \"winner\": 0,\r\n    \"money_amount\": 30.0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/bid/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"bid",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer bids",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg2MzI2LCJpYXQiOjE2NzM5NzkxMjYsImp0aSI6ImZhNTI3OTNmNTQ4NjQ1OGFhYTdkNTY4NmI1MjU4MWJjIiwidXNlcl9pZCI6OH0.bPAJKY7twUkx0qLWgSZ0iGl3jdZJHI3b0h7Wn1O9NJY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/customer/8/bids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"customer",
+						"8",
+						"bids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer activities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg2MzI2LCJpYXQiOjE2NzM5NzkxMjYsImp0aSI6ImZhNTI3OTNmNTQ4NjQ1OGFhYTdkNTY4NmI1MjU4MWJjIiwidXNlcl9pZCI6OH0.bPAJKY7twUkx0qLWgSZ0iGl3jdZJHI3b0h7Wn1O9NJY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/customer/8/activities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"customer",
+						"8",
+						"activities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get bid result for customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "Get bid result for customer",
+					"host": [
+						"Get bid result for customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Settings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjczOTg5NjcxLCJpYXQiOjE2NzM5ODI0NzEsImp0aSI6ImQ0MzUwYTdmMmFiMzRhN2ZhMTFiNGIxMDY0MmYwOWJhIiwidXNlcl9pZCI6OX0.pDwJGHls9dUYjlWsu_QVPN2oKCgJGifnqlGSH9MWuTk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/customer/9/settings/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"customer",
+						"9",
+						"settings",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
