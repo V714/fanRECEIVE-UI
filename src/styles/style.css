@@ -29,6 +29,26 @@ a, button, ul, li, input, p, b {
   z-index: -5;
 }
 
+#bgTexture {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: repeating-linear-gradient(223deg, rgba(0, 0, 0, 0.5764705882), rgba(0, 0, 0, 0.5764705882) 1px, transparent 1px, transparent 5px);
+  background-size: 30px;
+  opacity: 0.3;
+  z-index: -6;
+}
+
+.buttonTexture {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: repeating-linear-gradient(223deg, rgba(255, 255, 255, 0.5764705882), rgba(255, 255, 255, 0.5764705882) 3px, transparent 4px, transparent 9px);
+  background-size: 20px;
+  opacity: 0.04;
+  top: 0;
+}
+
 #topBar {
   display: flex;
   justify-content: space-between;
@@ -85,6 +105,7 @@ a, button, ul, li, input, p, b {
 }
 
 .buttonPrimary {
+  position: relative;
   text-align: center;
   color: white;
   width: 100%;
@@ -97,7 +118,7 @@ a, button, ul, li, input, p, b {
   transition: all 0.2s ease-in-out;
   background-size: 200% 200%;
 }
-.buttonPrimary:hover {
+.buttonPrimary:hover, .buttonPrimary:hover .buttonTexture {
   transition: all 0.3s ease-in-out;
   background-position-x: 30%;
 }
@@ -265,6 +286,7 @@ a, button, ul, li, input, p, b {
 }
 
 .ReactModal__Content {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1333333333);
   transform: translate(-50%, 100%) !important;
   transition: transform 400ms ease-in-out;
 }

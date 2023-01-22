@@ -1,9 +1,8 @@
 import React from "react";
-import { StoreContext } from "../App";
-import Login from "../modals/Login";
-import { checkPrime } from "crypto";
-import Register from "../modals/Register";
-import { setLogged } from "../utils/logged";
+import { StoreContext } from "../../App";
+import Login from "../../modals/Login";
+import Register from "../../modals/Register";
+import { setLogged } from "../../utils/logged";
 import { useNavigate } from "react-router-dom";
 
 function Container() {

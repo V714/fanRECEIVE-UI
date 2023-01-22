@@ -28,6 +28,24 @@ a, button, ul, li, input, p, b
     filter: hue-rotate(-10deg)
     z-index: -5
 
+#bgTexture
+    position: absolute
+    height: 100%
+    width: 100%
+    background-image: repeating-linear-gradient(223deg, #00000093, #00000093 1px, transparent 1px, transparent 5px)
+    background-size: 30px
+    opacity: .3
+    z-index: -6
+
+.buttonTexture
+    position: absolute
+    height: 100%
+    width: 100%
+    background-image: repeating-linear-gradient(223deg, #ffffff93, #ffffff93 3px, transparent 4px, transparent 9px)
+    background-size: 20px
+    opacity: .04
+    top: 0
+
 #topBar
     display: flex
     justify-content: space-between
@@ -77,6 +95,7 @@ a, button, ul, li, input, p, b
             background: linear-gradient(92.67deg, #00ff574a 2.2%, #1155c44a 65.81%, #00d4ff4a 98.82%)
 
 .buttonPrimary
+    position: relative
     text-align: center
     color: white
     width: 100%
@@ -88,7 +107,7 @@ a, button, ul, li, input, p, b
     cursor: pointer
     transition: all .2s ease-in-out
     background-size: 200% 200%
-    &:hover
+    &:hover, &:hover .buttonTexture
         transition: all .3s ease-in-out
         background-position-x: 30%
 
@@ -230,6 +249,7 @@ a, button, ul, li, input, p, b
     opacity: 0
 
 .ReactModal__Content
+    box-shadow: 0 0 20px #0002
     transform: translate(-50%,100%) !important
     transition: transform 400ms ease-in-out
 

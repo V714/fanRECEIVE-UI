@@ -1,13 +1,14 @@
 import React from "react";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/layout/TopBar";
 
 function Layout() {
   return (
-    <>
+    <div id="layout">
       <div id="bgGradient"></div>
       <div id="bgImage"></div>
+      <div id="bgTexture"></div>
       <TopBar />
-    </>
+    </div>
   );
 }
 

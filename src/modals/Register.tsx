@@ -1,77 +1,87 @@
-import InputText from "../components/InputText";
-import ButtonBorder from "../components/ButtonBorder";
-import React, { FormEvent } from "react";
+import InputText from "../components/inputs/InputText";
+import React from "react";
 import { StoreContext } from "../App";
+import Button from "../components/inputs/Button";
+import { useFormik } from "formik";
+import { useNotifications } from "reapop";
 
 function Register() {
-  const [regUsername, setRegUsername] = React.useState("");
-  const [regFirstName, setRegFirstName] = React.useState("");
-  const [regLastName, setRegLastName] = React.useState("");
-  const [regEmail, setRegEmail] = React.useState("");
-  const [regAge, setRegAge] = React.useState("");
-  const [regCity, setRegCity] = React.useState("");
-  const [regPass, setRegPass] = React.useState("");
-  const [regRePass, setRegRePass] = React.useState("");
   const { store, setStore } = React.useContext(StoreContext);
+  const { notify } = useNotifications();
 
-  const submitForm = (e: FormEvent) => {
-    console.log(e);
-  };
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      age: "",
+      city: "",
+      password: "",
+      repeat_password: "",
+    },
+    onSubmit: (values) => {
+      if (values.password === values.repeat_password) {
+        setStore({ ...store, isModalOpen: false });
+        console.log(values);
+        return;
+      }
+      notify("Passwords doesn't match", "error");
+    },
+  });
 
   return (
-    <form onSubmit={(e) => submitForm(e)}>
+    <form onSubmit={formik.handleSubmit}>
       <div className="modalTitle">Sign up</div>
       <InputText
         placeholder="Username"
         type="text"
-        name="setRegUsername"
-        handleChange={(e) => setRegUsername(e.value)}
+        name="username"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="First name"
         type="text"
-        name="firstNameReg"
-        handleChange={(e) => setRegFirstName(e.value)}
+        name="firstName"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="Last name"
         type="text"
-        name="lastNameReg"
-        handleChange={(e) => setRegLastName(e.value)}
+        name="lastName"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="E-mail"
         type="email"
-        name="emailReg"
-        handleChange={(e) => setRegEmail(e.value)}
+        name="email"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="Age"
         type="text"
-        name="ageReg"
-        handleChange={(e) => setRegAge(e.value)}
+        name="age"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="City"
         type="text"
-        name="regCity"
-        handleChange={(e) => setRegCity(e.value)}
+        name="city"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="Password"
         type="password"
-        name="passReg"
-        handleChange={(e) => setRegPass(e.value)}
+        name="password"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="Retype password"
         type="password"
-        name="rePassReg"
-        handleChange={(e) => setRegRePass(e.value)}
+        name="repeat_password"
+        handleChange={formik.handleChange}
       />
-      <button className="buttonPrimary" type="submit" name="regButton">
-        Register
-      </button>
+      <Button type="submit" text="Register" />
     </form>
   );
 }

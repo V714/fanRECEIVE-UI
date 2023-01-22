@@ -2,6 +2,9 @@ import React from "react";
 import Modal from "react-modal";
 import { StoreContext } from "../App";
 import { render } from "@testing-library/react";
+import Login from "./Login";
+import Register from "./Register";
+import ForgotPass from "./ForgotPass";
 
 const modalStyles = {
   content: {
@@ -28,32 +31,57 @@ Modal.setAppElement("#root");
 
 function ModalContainer() {
   const storeContext = React.useContext(StoreContext);
-
   const { store, setStore } = storeContext;
+  const [isWelcomeModal, setIsWelcomeModal] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    if (store.selectedModal)
+      setIsWelcomeModal(checkIfWelcomeModal(store.selectedModal));
+  }, [store.selectedModal]);
+
+  const checkIfWelcomeModal = (Component: React.FC): boolean =>
+    [Login as React.FC, ForgotPass as React.FC, Register as React.FC].includes(
+      Component
+    );
 
   return (
     <Modal
       isOpen={store.isModalOpen}
       onRequestClose={() => setStore({ ...store, isModalOpen: false })}
-      style={modalStyles}>
+      style={
+        isWelcomeModal
+          ? modalStyles
+          : {
+              ...modalStyles,
+              content: {
+                ...modalStyles.content,
+                minWidth: "500px",
+                width: "600px",
+              },
+            }
+      }>
       <div className={"modal"}>
-        <div className="modalImageContainer">
-          <div className="modalImageText">
-            <div className="modalImageTextTop">
-              <p>Welcome to </p>
-              <p className="modalImageB">
-                Fan<span className="fontGradient">RECEIVE</span>
-              </p>
+        {isWelcomeModal && (
+          <div className="modalImageContainer">
+            <div className="modalImageText">
+              <div className="modalImageTextTop">
+                <p>Welcome to </p>
+                <p className="modalImageB">
+                  Fan<span className="fontGradient">RECEIVE</span>
+                </p>
+              </div>
+              <div className="modalImageTextBottom">
+                <p>
+                  Your save place to <span className="fontGradient">BET</span>
+                </p>
+              </div>
             </div>
-            <div className="modalImageTextBottom">
-              <p>
-                Your save place to <span className="fontGradient">BET</span>
-              </p>
-            </div>
+            <img src={require("../imgs/modalPicture.png")} />
           </div>
-          <img src={require("../imgs/modalPicture.png")} />
-        </div>
-        <div className="modalFormContainer">
+        )}
+        <div
+          className="modalFormContainer"
+          style={!isWelcomeModal ? { width: "100%" } : {}}>
           {store.selectedModal && <store.selectedModal />}
         </div>
       </div>

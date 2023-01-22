@@ -1,44 +1,48 @@
-import InputText from "../components/InputText";
-import ButtonBorder from "../components/ButtonBorder";
+import InputText from "../components/inputs/InputText";
+import ButtonBorder from "../components/inputs/ButtonBorder";
 import React, { FormEvent } from "react";
 import { StoreContext } from "../App";
 import Register from "./Register";
 import ForgotPass from "./ForgotPass";
 import { setLogged } from "../utils/logged";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/inputs/Button";
+import { useFormik } from "formik";
+import { useNotifications } from "reapop";
 
 function Login() {
   const navigate = useNavigate();
-  const [loginEmail, setLoginEmail] = React.useState("");
-  const [loginPass, setLoginPass] = React.useState("");
   const { store, setStore } = React.useContext(StoreContext);
 
-  const submitForm = (e: FormEvent) => {
-    e.preventDefault();
-    setStore({ ...store, logged: true, isModalOpen: false });
-    setLogged(true);
-    console.log(e);
-    navigate("/home");
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      setStore({ ...store, logged: true, isModalOpen: false });
+      setLogged(true);
+      console.log(values);
+      navigate("/home");
+    },
+  });
 
   return (
-    <form onSubmit={(e) => submitForm(e)}>
+    <form onSubmit={formik.handleSubmit}>
       <div className="modalTitle">Sign In</div>
       <InputText
         placeholder="E-mail"
         type="email"
-        name="emailLogin"
-        handleChange={(e) => setLoginEmail(e.value)}
+        name="email"
+        handleChange={formik.handleChange}
       />
       <InputText
         placeholder="Password"
         type="password"
-        name="passLogin"
-        handleChange={(e) => setLoginPass(e.value)}
+        name="password"
+        handleChange={formik.handleChange}
       />
-      <button className="buttonPrimary" type="submit" name="loginButton">
-        Login
-      </button>
+      <Button type="submit" text="Login" />
       <button
         className="fontGradient forgotPassButton"
         name="forgotPassButton"
