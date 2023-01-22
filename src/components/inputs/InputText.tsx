@@ -1,28 +1,28 @@
 import React, { ChangeEvent } from "react";
 
-interface InputTextInterface {
+interface inputTextInterface {
   placeholder: string;
   handleChange: (e: ChangeEvent) => void;
   type: string;
   name: string;
 }
 
-function InputText({
+function inputText({
   placeholder,
   handleChange,
   type,
   name,
-}: InputTextInterface) {
+}: inputTextInterface) {
   return (
-    <div className="inputText">
+    <div className="input-text">
       <input
         placeholder={placeholder}
         name={name}
         type={type}
         onChange={(e) => handleChange(e)}></input>
-      <div className="lineGradient"></div>
+      <div className="line-gradient"></div>
     </div>
   );
 }
 
-export default InputText;
+export default inputText;

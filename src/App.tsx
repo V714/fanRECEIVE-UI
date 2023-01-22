@@ -1,37 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
-import NotificationsSystem, {
-  NotificationsProvider,
-  useNotifications,
-  atalhoTheme,
-} from "reapop";
+import { NotificationsProvider } from "reapop";
 import "./App.css";
 import Layout from "./pages/Layout";
 import ModalContainer from "./modals/ModalContainer";
-import { isLogged } from "./utils/logged";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import Matches from "./pages/Matches";
-import YourBids from "./pages/YourBids";
 import { Notificator } from "./components/Notificator";
 import { setUpNotifications } from "reapop";
-
-interface StoreInterface {
-  logged: boolean;
-  isModalOpen: boolean;
-  selectedModal: React.FC | null;
-}
-
-interface StoreContextInterface {
-  store: StoreInterface;
-  setStore: React.Dispatch<React.SetStateAction<StoreInterface>>;
-}
-
-const storeInit = {
-  logged: isLogged(),
-  isModalOpen: false,
-  selectedModal: null,
-};
+import {
+  StoreContextInterface,
+  StoreInterface,
+  storeInit,
+} from "./models/store";
+import { setLogged } from "./utils/logged";
 
 export const StoreContext = React.createContext<StoreContextInterface>(
   undefined!
@@ -53,6 +36,11 @@ function App() {
     });
   }, []);
 
+  React.useEffect(() => {
+    setLogged(store.logged);
+    setStore({ ...store, onlyUserBids: false });
+  }, [store.logged]);
+
   return (
     <>
       <StoreContext.Provider value={{ store, setStore }}>
@@ -64,7 +52,6 @@ function App() {
               <Route path="/" element={<Welcome />} />
               <Route path="/home" element={<Home />} />
               <Route path="/matches" element={<Matches />} />
-              <Route path="/your-bids" element={<YourBids />} />
             </Routes>
             <ModalContainer />
           </BrowserRouter>

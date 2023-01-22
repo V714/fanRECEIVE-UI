@@ -125,13 +125,11 @@ a, button, ul, li, input, p, b {
 
 .buttonAlternativeBorder {
   width: 100%;
-  height: 70px;
   margin-top: 50px;
   font-size: 0.8rem;
   background: linear-gradient(90.44deg, #00FF57 7.89%, #1155C4 31.7%, #00D4FF 50%);
   background-repeat: repeat-x;
   border-radius: 12px;
-  padding: 4px;
   text-align: center;
   color: white;
   display: flex;
@@ -144,6 +142,7 @@ a, button, ul, li, input, p, b {
 .buttonAlternativeBorder:hover {
   -webkit-animation: buttonAnimationBorder 3s linear infinite;
           animation: buttonAnimationBorder 3s linear infinite;
+  transform: scale(1.03);
 }
 .buttonAlternativeBorder .buttonAlternativeBackground {
   background-color: #080A23;
@@ -153,6 +152,12 @@ a, button, ul, li, input, p, b {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.buttonAlternativeBorder .buttonAlternativeBackground:hover .buttonAlternative {
+  -webkit-animation: buttonAnimationText 3s linear infinite;
+          animation: buttonAnimationText 3s linear infinite;
+  transition: all 0.7s ease-in-out;
+  filter: brightness(1.2);
 }
 .buttonAlternativeBorder .buttonAlternativeBackground .buttonAlternative {
   padding: 7px;
@@ -164,14 +169,8 @@ a, button, ul, li, input, p, b {
   transition: all 0.5s ease-in-out;
   background-size: 200% 200%;
 }
-.buttonAlternativeBorder .buttonAlternativeBackground .buttonAlternative:hover {
-  -webkit-animation: buttonAnimationText 3s linear infinite;
-          animation: buttonAnimationText 3s linear infinite;
-  transition: all 0.7s ease-in-out;
-  filter: brightness(1.2);
-}
 
-.lineGradient {
+.line-gradient {
   width: 100%;
   height: 3px;
   background: -webkit-linear-gradient(0deg, #020024 0%, #1155c4 36.91%, #00D4FF 50%);
@@ -240,8 +239,27 @@ a, button, ul, li, input, p, b {
   text-align: left;
   margin-bottom: 30px;
 }
+.modal .modal-match {
+  width: 80%;
+}
+.modal .modal-match .modal-match-description {
+  font-size: 0.5rem;
+}
+.modal .modal-match .modal-match-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 50px;
+}
+.modal .modal-match .modal-match-buttons-container .buttonAlternativeBorder {
+  margin: 0;
+}
+.modal .modal-match .modal-match-buttons-container .buttonPrimary {
+  margin: 0;
+}
 
-.inputText {
+.input-text {
   margin: 10px 0;
   display: flex;
   justify-content: center;
@@ -249,27 +267,93 @@ a, button, ul, li, input, p, b {
   flex-direction: column;
   width: 100%;
 }
-.inputText input {
+.input-text input {
   width: 100%;
   color: #fff;
   font-size: 0.6rem;
   padding: 5px;
 }
-.inputText input:focus + .lineGradient {
+.input-text input:focus + .line-gradient {
   background-position-x: 50%;
   transition: all 0.2s ease-in-out;
 }
 
-.forgotPassButton {
+.forgot-pass-button {
   width: 100%;
   font-size: 0.5rem;
   font-weight: 300;
   text-align: center;
   cursor: pointer;
 }
-.forgotPassButton:hover {
+.forgot-pass-button:hover {
   transform: scale(1.07);
   transition: all 0.1s ease-in-out;
+}
+
+.matches-container {
+  padding: 150px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 35px;
+  min-width: 400px;
+  width: 100%;
+  height: calc(100vh - 300px);
+  overflow-y: auto;
+}
+.matches-container .match-container {
+  min-width: 400px;
+  width: 50%;
+  height: 150px;
+  background: #080A23;
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.2666666667);
+  transition: 0.1s ease-in-out all;
+}
+.matches-container .match-container:hover {
+  transition: 0.1s ease-in-out all;
+  transform: scale(1.04);
+}
+.matches-container .match-container .match-element-image {
+  width: 250px;
+  height: 100%;
+  cursor: pointer;
+}
+.matches-container .match-container .match-element-image img {
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.matches-container .match-container .match-element-details {
+  color: #fff;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.matches-container .match-container .match-element-details .match-element-details-small {
+  color: #777;
+  font-size: 0.5rem;
+}
+.matches-container .match-container .match-element-button {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  right: 30px;
+  bottom: 5px;
+}
+.matches-container .match-container .match-element-button .buttonAlternativeBorder {
+  position: absolute;
+  margin: 0;
+}
+.matches-container .match-container .match-element-button .buttonPrimary {
+  margin: 0;
+  position: absolute;
 }
 
 .ReactModal__Overlay {

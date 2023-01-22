@@ -4,6 +4,7 @@ import { StoreContext } from "../App";
 import Button from "../components/inputs/Button";
 import { useFormik } from "formik";
 import { useNotifications } from "reapop";
+import { closeModal } from "../utils/modal-controller";
 
 function Register() {
   const { store, setStore } = React.useContext(StoreContext);
@@ -22,7 +23,7 @@ function Register() {
     },
     onSubmit: (values) => {
       if (values.password === values.repeat_password) {
-        setStore({ ...store, isModalOpen: false });
+        closeModal({ store, setStore });
         console.log(values);
         return;
       }

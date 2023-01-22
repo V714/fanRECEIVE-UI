@@ -1,6 +1,6 @@
 import InputText from "../components/inputs/InputText";
 import ButtonBorder from "../components/inputs/ButtonBorder";
-import React, { FormEvent } from "react";
+import React from "react";
 import { StoreContext } from "../App";
 import Register from "./Register";
 import ForgotPass from "./ForgotPass";
@@ -8,7 +8,7 @@ import { setLogged } from "../utils/logged";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/inputs/Button";
 import { useFormik } from "formik";
-import { useNotifications } from "reapop";
+import { closeModal } from "../utils/modal-controller";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,10 +20,9 @@ function Login() {
       password: "",
     },
     onSubmit: (values) => {
-      setStore({ ...store, logged: true, isModalOpen: false });
-      setLogged(true);
-      console.log(values);
+      closeModal({ store, setStore }, { logged: true });
       navigate("/home");
+      console.log(values);
     },
   });
 
@@ -44,8 +43,8 @@ function Login() {
       />
       <Button type="submit" text="Login" />
       <button
-        className="fontGradient forgotPassButton"
-        name="forgotPassButton"
+        className="fontGradient forgot-pass-button"
+        name="forgot-pass-button"
         onClick={() =>
           setStore({ ...store, isModalOpen: true, selectedModal: ForgotPass })
         }>

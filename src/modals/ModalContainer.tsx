@@ -1,10 +1,10 @@
 import React from "react";
 import Modal from "react-modal";
 import { StoreContext } from "../App";
-import { render } from "@testing-library/react";
 import Login from "./Login";
 import Register from "./Register";
 import ForgotPass from "./ForgotPass";
+import { closeModal } from "../utils/modal-controller";
 
 const modalStyles = {
   content: {
@@ -47,9 +47,9 @@ function ModalContainer() {
   return (
     <Modal
       isOpen={store.isModalOpen}
-      onRequestClose={() => setStore({ ...store, isModalOpen: false })}
+      onRequestClose={() => closeModal({ store, setStore })}
       style={
-        isWelcomeModal
+        isWelcomeModal || store.modalImage
           ? modalStyles
           : {
               ...modalStyles,
@@ -61,27 +61,35 @@ function ModalContainer() {
             }
       }>
       <div className={"modal"}>
-        {isWelcomeModal && (
+        {(isWelcomeModal || store.modalImage) && (
           <div className="modalImageContainer">
-            <div className="modalImageText">
-              <div className="modalImageTextTop">
-                <p>Welcome to </p>
-                <p className="modalImageB">
-                  Fan<span className="fontGradient">RECEIVE</span>
-                </p>
+            {!store.modalImage && (
+              <div className="modalImageText">
+                <div className="modalImageTextTop">
+                  <p>Welcome to </p>
+                  <p className="modalImageB">
+                    Fan<span className="fontGradient">RECEIVE</span>
+                  </p>
+                </div>
+                <div className="modalImageTextBottom">
+                  <p>
+                    Your save place to <span className="fontGradient">BET</span>
+                  </p>
+                </div>
               </div>
-              <div className="modalImageTextBottom">
-                <p>
-                  Your save place to <span className="fontGradient">BET</span>
-                </p>
-              </div>
-            </div>
-            <img src={require("../imgs/modalPicture.png")} />
+            )}
+            <img
+              src={
+                store.modalImage
+                  ? store.modalImage
+                  : require("../imgs/modalPicture.png")
+              }
+            />
           </div>
         )}
         <div
           className="modalFormContainer"
-          style={!isWelcomeModal ? { width: "100%" } : {}}>
+          style={!isWelcomeModal && !store.modalImage ? { width: "100%" } : {}}>
           {store.selectedModal && <store.selectedModal />}
         </div>
       </div>

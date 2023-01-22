@@ -1,4 +1,6 @@
-export const setLogged = (logged: boolean) => {
+import { StoreContextInterface } from "../models/store";
+
+export const setLogged = (logged: boolean): void => {
   window.localStorage.setItem("logged", logged ? "1" : "0");
 };
 

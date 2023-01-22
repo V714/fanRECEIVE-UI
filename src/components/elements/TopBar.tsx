@@ -4,14 +4,14 @@ import Login from "../../modals/Login";
 import Register from "../../modals/Register";
 import { setLogged } from "../../utils/logged";
 import { useNavigate } from "react-router-dom";
+import { closeModal } from "../../utils/modal-controller";
 
 function Container() {
   const navigate = useNavigate();
   const { store, setStore } = React.useContext(StoreContext);
 
   const logout = () => {
-    setStore({ ...store, logged: false, isModalOpen: false });
-    setLogged(false);
+    closeModal({ store, setStore }, { logged: false });
     navigate("/");
   };
 
@@ -25,8 +25,20 @@ function Container() {
           {store.logged ? (
             <>
               <li onClick={() => navigate("/home")}>Home</li>
-              <li onClick={() => navigate("/matches")}>Matches</li>
-              <li onClick={() => navigate("/your-bids")}>Your bids</li>
+              <li
+                onClick={() => {
+                  setStore({ ...store, onlyUserBids: false });
+                  navigate("/matches");
+                }}>
+                Matches
+              </li>
+              <li
+                onClick={() => {
+                  setStore({ ...store, onlyUserBids: true });
+                  navigate("/matches");
+                }}>
+                Your bids
+              </li>
               <li onClick={() => logout()}>Logout</li>
             </>
           ) : (

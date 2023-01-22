@@ -113,13 +113,11 @@ a, button, ul, li, input, p, b
 
 .buttonAlternativeBorder
     width: 100%
-    height: 70px
     margin-top: 50px
     font-size: 0.8rem
     background: linear-gradient(90.44deg, #00FF57 7.89%, #1155C4 31.7%, #00D4FF 50%)
     background-repeat: repeat-x
     border-radius: 12px
-    padding: 4px
     text-align: center
     color: white
     display: flex
@@ -130,6 +128,7 @@ a, button, ul, li, input, p, b
     background-size: 200% 200%
     &:hover
         animation: buttonAnimationBorder 3s linear infinite
+        transform: scale(1.03)
 
     .buttonAlternativeBackground
         background-color: $modalBgColor
@@ -139,6 +138,10 @@ a, button, ul, li, input, p, b
         display: flex
         justify-content: center
         align-items: center
+        &:hover .buttonAlternative
+            animation: buttonAnimationText 3s linear infinite
+            transition: all .7s ease-in-out
+            filter: brightness(1.2)
         .buttonAlternative
             padding: 7px
             background: -webkit-linear-gradient(180deg, #42D500 7.85%, #035EF3 26.91%, #00D4FF 42.63%)
@@ -148,12 +151,8 @@ a, button, ul, li, input, p, b
             background-position-x: 100%
             transition: all .5s ease-in-out
             background-size: 200% 200%
-            &:hover
-                animation: buttonAnimationText 3s linear infinite
-                transition: all .7s ease-in-out
-                filter: brightness(1.2)
 
-.lineGradient
+.line-gradient
     width: 100%
     height: 3px
     background: -webkit-linear-gradient(0deg, #020024 0%, #1155c4 36.91%, #00D4FF 50%)
@@ -211,8 +210,22 @@ a, button, ul, li, input, p, b
         .modalTitle
             text-align: left
             margin-bottom: 30px
+    .modal-match
+        width: 80%
+        .modal-match-description
+            font-size: .5rem
+        .modal-match-buttons-container
+            display: flex
+            justify-content: center
+            align-items: center
+            gap: 50px
+            margin-top: 50px
+            .buttonAlternativeBorder
+                margin: 0
+            .buttonPrimary
+                margin: 0
 
-.inputText
+.input-text
     margin: 10px 0
     display: flex
     justify-content: center
@@ -224,11 +237,11 @@ a, button, ul, li, input, p, b
         color: #fff
         font-size: 0.6rem
         padding: 5px
-        &:focus + .lineGradient
+        &:focus + .line-gradient
             background-position-x: 50%
             transition: all 0.2s ease-in-out
 
-.forgotPassButton
+.forgot-pass-button
     width: 100%
     font-size: 0.5rem
     font-weight: 300
@@ -237,6 +250,61 @@ a, button, ul, li, input, p, b
     &:hover
         transform: scale(1.07)
         transition: all 0.1s ease-in-out
+
+.matches-container
+    padding: 150px 0
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    gap: 35px
+    min-width: 400px
+    width: 100%
+    height: calc(100vh - 300px)
+    overflow-y: auto
+    .match-container
+        min-width: 400px
+        width: 50%
+        height: 150px
+        background: $modalBgColor
+        border-radius: 10px
+        display: flex
+        position: relative
+        box-shadow: 0 0 30px 3px #0004
+        transition: 0.1s ease-in-out all
+        &:hover
+            transition: 0.1s ease-in-out all
+            transform: scale(1.04)
+        .match-element-image
+            width: 250px
+            height: 100%
+            cursor: pointer
+            img
+                border-radius: 0
+                width: 100%
+                height: 100%
+                object-fit: cover
+        .match-element-details
+            color: #fff
+            margin-left: 20px
+            display: flex
+            flex-direction: column
+            justify-content: space-around
+            .match-element-details-small
+                color: #777
+                font-size: .5rem
+        .match-element-button
+            position: absolute
+            width: 200px
+            height: 50px
+            right: 30px
+            bottom: 5px
+            .buttonAlternativeBorder
+                position: absolute
+                margin: 0
+            .buttonPrimary
+                margin: 0
+                position: absolute
 
 .ReactModal__Overlay
     opacity: 0
