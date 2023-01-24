@@ -15,7 +15,14 @@ function Welcome() {
 
   return (
     <>
-      <img id="bgPlayer" src={require("../imgs/home.png")} />
+      <img
+        id="bgPlayer"
+        src={
+          store.isMobile
+            ? require("../imgs/homeMobile.png")
+            : require("../imgs/home.png")
+        }
+      />
       <div className="welcomeText">
         <p>
           Your save place to <span className="fontGradient">BET</span>

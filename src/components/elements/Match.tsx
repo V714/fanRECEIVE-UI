@@ -9,21 +9,23 @@ import MatchDetails from "../../modals/MatchDetails";
 function Match({ match }: { match: MatchInterface }) {
   const { store, setStore } = React.useContext(StoreContext);
 
+  const openMatchDetails = () => {
+    setStore({
+      ...store,
+      isModalOpen: true,
+      modalImage: match.img,
+      selectedModal: () => <MatchDetails match={match} />,
+    });
+  };
+
   return (
     <div className="match-container">
-      <div
-        className="match-element-image"
-        onClick={() => {
-          setStore({
-            ...store,
-            isModalOpen: true,
-            modalImage: match.img,
-            selectedModal: () => <MatchDetails match={match} />,
-          });
-        }}>
+      <div className="match-element-image" onClick={openMatchDetails}>
         <img src={match.img} alt="match image" />
       </div>
-      <div className="match-element-details">
+      <div
+        className="match-element-details"
+        onClick={store.isMobile ? openMatchDetails : () => {}}>
         <div>{match.title}</div>
         <div>
           <div className="match-element-details-small">Date: {match.date}</div>

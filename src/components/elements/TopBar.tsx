@@ -21,53 +21,109 @@ function Container() {
         <div id="logo" onClick={() => navigate("/")}>
           Fan<p className="fontGradient">RECEIVE</p>
         </div>
-        <ul>
-          {store.logged ? (
-            <>
-              <li onClick={() => navigate("/home")}>Home</li>
-              <li
-                onClick={() => {
-                  setStore({ ...store, onlyUserBids: false });
-                  navigate("/matches");
-                }}>
-                Matches
-              </li>
-              <li
-                onClick={() => {
-                  setStore({ ...store, onlyUserBids: true });
-                  navigate("/matches");
-                }}>
-                Your bids
-              </li>
-              <li onClick={() => logout()}>Logout</li>
-            </>
-          ) : (
-            <>
-              <li onClick={() => navigate("/matches")}>Matches</li>
-              <li
-                onClick={() =>
-                  setStore({
-                    ...store,
-                    isModalOpen: true,
-                    selectedModal: Login,
-                  })
-                }>
-                Login
-              </li>
-              <li
-                onClick={() =>
-                  setStore({
-                    ...store,
-                    isModalOpen: true,
-                    selectedModal: Register,
-                  })
-                }
-                className="liAlternative">
-                Register
-              </li>
-            </>
-          )}
-        </ul>
+        {store.isMobile ? (
+          <>
+            {" "}
+            <button id="hamburger">
+              <img src={require("../../imgs/menu.svg")} alt="menu button" />
+            </button>
+            <ul id="menu-mobile">
+              {store.logged ? (
+                <>
+                  <li onClick={() => navigate("/home")}>Home</li>
+                  <li
+                    onClick={() => {
+                      setStore({ ...store, onlyUserBids: false });
+                      navigate("/matches");
+                    }}>
+                    Matches
+                  </li>
+                  <li
+                    onClick={() => {
+                      setStore({ ...store, onlyUserBids: true });
+                      navigate("/matches");
+                    }}>
+                    Your bids
+                  </li>
+                  <li onClick={() => logout()}>Logout</li>
+                </>
+              ) : (
+                <>
+                  <li onClick={() => navigate("/matches")}>Matches</li>
+                  <li
+                    onClick={() =>
+                      setStore({
+                        ...store,
+                        isModalOpen: true,
+                        selectedModal: Login,
+                      })
+                    }>
+                    Login
+                  </li>
+                  <li
+                    onClick={() =>
+                      setStore({
+                        ...store,
+                        isModalOpen: true,
+                        selectedModal: Register,
+                      })
+                    }
+                    className="liAlternative">
+                    Register
+                  </li>
+                </>
+              )}
+            </ul>
+          </>
+        ) : (
+          <ul>
+            {store.logged ? (
+              <>
+                <li onClick={() => navigate("/home")}>Home</li>
+                <li
+                  onClick={() => {
+                    setStore({ ...store, onlyUserBids: false });
+                    navigate("/matches");
+                  }}>
+                  Matches
+                </li>
+                <li
+                  onClick={() => {
+                    setStore({ ...store, onlyUserBids: true });
+                    navigate("/matches");
+                  }}>
+                  Your bids
+                </li>
+                <li onClick={() => logout()}>Logout</li>
+              </>
+            ) : (
+              <>
+                <li onClick={() => navigate("/matches")}>Matches</li>
+                <li
+                  onClick={() =>
+                    setStore({
+                      ...store,
+                      isModalOpen: true,
+                      selectedModal: Login,
+                    })
+                  }>
+                  Login
+                </li>
+                <li
+                  onClick={() =>
+                    setStore({
+                      ...store,
+                      isModalOpen: true,
+                      selectedModal: Register,
+                    })
+                  }
+                  className="liAlternative">
+                  Register
+                </li>
+              </>
+            )}
+          </ul>
+        )}
       </nav>
     </>
   );

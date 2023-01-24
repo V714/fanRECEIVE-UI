@@ -40,9 +40,13 @@ function ModalContainer() {
   }, [store.selectedModal]);
 
   const checkIfWelcomeModal = (Component: React.FC): boolean =>
-    [Login as React.FC, ForgotPass as React.FC, Register as React.FC].includes(
-      Component
-    );
+    store.isMobile
+      ? false
+      : [
+          Login as React.FC,
+          ForgotPass as React.FC,
+          Register as React.FC,
+        ].includes(Component);
 
   return (
     <Modal
@@ -61,7 +65,7 @@ function ModalContainer() {
             }
       }>
       <div className={"modal"}>
-        {(isWelcomeModal || store.modalImage) && (
+        {(isWelcomeModal || store.modalImage) && !store.isMobile && (
           <div className="modalImageContainer">
             {!store.modalImage && (
               <div className="modalImageText">

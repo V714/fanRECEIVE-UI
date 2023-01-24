@@ -6,6 +6,7 @@ export interface StoreInterface {
   onlyUserBids: boolean;
   modalImage: string | null;
   selectedModal: React.FC<any> | null;
+  isMobile: boolean;
 }
 
 export interface StoreContextInterface {
@@ -19,4 +20,5 @@ export const storeInit = {
   onlyUserBids: false,
   modalImage: null,
   selectedModal: null,
+  isMobile: false,
 };

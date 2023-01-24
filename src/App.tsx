@@ -41,6 +41,20 @@ function App() {
     setStore({ ...store, onlyUserBids: false });
   }, [store.logged]);
 
+  React.useEffect(() => {
+    const checkWindowWidth = () => {
+      checkAndSetMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", checkWindowWidth);
+    checkWindowWidth();
+    return () => window.removeEventListener("resize", checkWindowWidth);
+  }, []);
+
+  const checkAndSetMobile = (isMobile: boolean): void => {
+    setStore({ ...store, isMobile: isMobile });
+  };
+
   return (
     <>
       <StoreContext.Provider value={{ store, setStore }}>

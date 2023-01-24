@@ -5,10 +5,12 @@ import Button from "../components/inputs/Button";
 import { useFormik } from "formik";
 import { useNotifications } from "reapop";
 import { closeModal } from "../utils/modal-controller";
+import { SessionService } from "../services/session-service";
 
 function Register() {
   const { store, setStore } = React.useContext(StoreContext);
   const { notify } = useNotifications();
+  const sessionService = new SessionService();
 
   const formik = useFormik({
     initialValues: {
@@ -23,8 +25,8 @@ function Register() {
     },
     onSubmit: (values) => {
       if (values.password === values.repeat_password) {
-        closeModal({ store, setStore });
-        console.log(values);
+        sessionService.register(values).subscribe((data) => console.log(data));
+        // closeModal({ store, setStore });
         return;
       }
       notify("Passwords doesn't match", "error");

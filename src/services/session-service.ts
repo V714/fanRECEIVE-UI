@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "axios-observable";
 import { apiUrl } from "../integrations/api";
 
 interface LoginInterface {
@@ -17,20 +17,20 @@ interface RegisterInterface {
   repeat_password: string;
 }
 
-class SessionService {
+export class SessionService {
   login = (login: LoginInterface) => {
-    return axios.post(apiUrl + "/token", login);
+    return Axios.post(apiUrl + "/token", login);
   };
 
   register = (newUser: RegisterInterface) => {
-    return axios.post(apiUrl + "/register", newUser);
+    return Axios.post(apiUrl + "/register", newUser);
   };
 
   refresh = (token: string) => {
-    return axios.post(apiUrl + "/token/refresh", token);
+    return Axios.post(apiUrl + "/token/refresh", token);
   };
 
   verify = (token: string) => {
-    return axios.post(apiUrl + "/token/verify", token);
+    return Axios.post(apiUrl + "/token/verify", token);
   };
 }

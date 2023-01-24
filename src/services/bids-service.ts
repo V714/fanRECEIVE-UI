@@ -1,4 +1,4 @@
-import axios from "axios";
+import Axios from "axios-observable";
 import { apiUrl } from "../integrations/api";
 
 interface CreateBidInterface {
@@ -8,8 +8,8 @@ interface CreateBidInterface {
   money_amount: number;
 }
 
-class BidService {
+export class BidService {
   createBid = (bid: CreateBidInterface) => {
-    return axios.post(apiUrl + "bid/create", bid);
+    return Axios.post(apiUrl + "bid/create", bid);
   };
 }

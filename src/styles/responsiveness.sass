@@ -1,0 +1,84 @@
+
+@media only screen and (max-width: 768px)
+    #topBar ul li
+        padding: 0
+    #hamburger
+        display: block
+        z-index: 98
+        position: absolute
+        top: 20px
+        cursor: pointer
+        right: 20px
+        img
+            width: 30px
+        &:focus ~ #menu-mobile
+            transform: none !important
+            transition: all .3s ease-in-out
+    #menu-mobile
+        position: absolute
+        z-index: 99
+        right: 0
+        transition: all .4s ease-in-out
+        transform: translateY(-150%)
+        justify-content: flex-end
+        align-items: flex-end
+        flex-direction: column
+        text-align: end
+        width: 200px
+        backdrop-filter: blur(15px)
+        background-color: #080A33
+        padding: 15px 0 !important
+        li
+            z-index: 100
+            padding: 15px !important
+            justify-content: flex-end !important
+            text-align: end
+            width: 100%
+            &::after
+                all: unset
+            &:hover
+                background-color: #00D4FF77 !important
+            &::before
+                display: none
+    html
+        font-size: 24px
+    #bgPlayer
+        overflow: hidden
+        filter: blur(2px)
+        opacity: .8
+    .welcomeText
+        width: 80%
+        letter-spacing: 2px
+        align-items: flex-start
+        gap: 10px
+        font-weight: 500
+        padding-left: 0
+        margin: auto
+    .buttonPrimary
+        height: 50px !important
+    #topBar
+        #logo
+            margin: auto
+            width: 50%
+    .ReactModal__Content
+        width: 90% !important
+        min-width: 90% !important
+        .modal
+            width: 100%
+            .modalFormContainer
+                width: 100%
+    .matches-container
+        min-width: unset
+        .match-container
+            width: 90%
+            min-width: unset
+            height: 80px
+            font-size: .5rem
+            .match-element-image
+                width: 120px
+            .match-element-button
+                display: none
+
+            .match-element-details
+                .match-element-details-small
+                    font-size: .4rem
