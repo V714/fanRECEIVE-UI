@@ -6,14 +6,16 @@ a, button, ul, li, input, p, b
 
 #bgGradient
     width: 100%
-    height: 100vh
+    height: -webkit-fill-available
+    height: -webkit-fill-available
     background: linear-gradient(107.56deg, #020024 0%, #1155C4 69.79%, #00D4FF 100%)
     position: absolute
     z-index: -7
 
 #bgImage
     width: 100%
-    height: 100vh
+    height: -webkit-fill-available
+    height: -webkit-fill-available
     background: url('../imgs/bgblur.png')
     background-size: cover
     position: absolute
@@ -30,7 +32,8 @@ a, button, ul, li, input, p, b
 
 #bgTexture
     position: absolute
-    height: 100%
+    height: -webkit-fill-available
+    height: -webkit-fill-available
     width: 100%
     background-image: repeating-linear-gradient(223deg, #00000093, #00000093 1px, transparent 1px, transparent 5px)
     background-size: 30px
@@ -261,7 +264,7 @@ a, button, ul, li, input, p, b
     gap: 35px
     min-width: 400px
     width: 100%
-    height: calc(100vh - 300px)
+    height: calc( 100% - 300px)
     overflow-y: auto
     .match-container
         min-width: 400px
@@ -309,6 +312,7 @@ a, button, ul, li, input, p, b
                 position: absolute
 
 .ReactModal__Overlay
+    z-index: 9
     opacity: 0
     transition: opacity 100ms ease-in-out
 
@@ -335,7 +339,7 @@ a, button, ul, li, input, p, b
     gap: 20px
     font-size: 1.4rem
     font-weight: 500
-    height: 90vh
+    height: -webkit-fill-available
     letter-spacing: 2px
     color: white
     display: flex

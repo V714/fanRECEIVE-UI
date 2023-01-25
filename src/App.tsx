@@ -52,7 +52,7 @@ function App() {
   }, []);
 
   const checkAndSetMobile = (isMobile: boolean): void => {
-    setStore({ ...store, isMobile: isMobile });
+    if (isMobile !== store.isMobile) setStore({ ...store, isMobile: isMobile });
   };
 
   return (

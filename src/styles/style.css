@@ -4,7 +4,8 @@ a, button, ul, li, input, p, b {
 
 #bgGradient {
   width: 100%;
-  height: 100vh;
+  height: -webkit-fill-available;
+  height: -webkit-fill-available;
   background: linear-gradient(107.56deg, #020024 0%, #1155C4 69.79%, #00D4FF 100%);
   position: absolute;
   z-index: -7;
@@ -12,7 +13,8 @@ a, button, ul, li, input, p, b {
 
 #bgImage {
   width: 100%;
-  height: 100vh;
+  height: -webkit-fill-available;
+  height: -webkit-fill-available;
   background: url("../imgs/bgblur.png");
   background-size: cover;
   position: absolute;
@@ -31,7 +33,8 @@ a, button, ul, li, input, p, b {
 
 #bgTexture {
   position: absolute;
-  height: 100%;
+  height: -webkit-fill-available;
+  height: -webkit-fill-available;
   width: 100%;
   background-image: repeating-linear-gradient(223deg, rgba(0, 0, 0, 0.5764705882), rgba(0, 0, 0, 0.5764705882) 1px, transparent 1px, transparent 5px);
   background-size: 30px;
@@ -300,7 +303,7 @@ a, button, ul, li, input, p, b {
   gap: 35px;
   min-width: 400px;
   width: 100%;
-  height: calc(100vh - 300px);
+  height: calc(100% - 300px);
   overflow-y: auto;
 }
 .matches-container .match-container {
@@ -359,6 +362,7 @@ a, button, ul, li, input, p, b {
 }
 
 .ReactModal__Overlay {
+  z-index: 9;
   opacity: 0;
   transition: opacity 100ms ease-in-out;
 }
@@ -391,7 +395,7 @@ a, button, ul, li, input, p, b {
   gap: 20px;
   font-size: 1.4rem;
   font-weight: 500;
-  height: 90vh;
+  height: -webkit-fill-available;
   letter-spacing: 2px;
   color: white;
   display: flex;
@@ -503,6 +507,7 @@ a, button, ul, li, input, p, b {
   }
   html {
     font-size: 24px;
+    height: -webkit-fill-available;
   }
   #bgPlayer {
     overflow: hidden;
@@ -528,6 +533,7 @@ a, button, ul, li, input, p, b {
   .ReactModal__Content {
     width: 90% !important;
     min-width: 90% !important;
+    height: 90% !important;
   }
   .ReactModal__Content .modal {
     width: 100%;

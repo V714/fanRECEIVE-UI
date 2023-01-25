@@ -9,10 +9,15 @@ import { closeModal } from "../../utils/modal-controller";
 function Container() {
   const navigate = useNavigate();
   const { store, setStore } = React.useContext(StoreContext);
+  const hamburgerRef = React.useRef<HTMLButtonElement>(null);
 
   const logout = () => {
     closeModal({ store, setStore }, { logged: false });
     navigate("/");
+  };
+
+  const focus = () => {
+    if (hamburgerRef.current) hamburgerRef.current.focus();
   };
 
   return (
@@ -23,8 +28,7 @@ function Container() {
         </div>
         {store.isMobile ? (
           <>
-            {" "}
-            <button id="hamburger">
+            <button id="hamburger" ref={hamburgerRef} onClick={() => focus()}>
               <img src={require("../../imgs/menu.svg")} alt="menu button" />
             </button>
             <ul id="menu-mobile">
