@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import { NotificationsProvider } from "reapop";
-import "./App.css";
+import "./index.css";
 import Layout from "./pages/Layout";
 import ModalContainer from "./modals/ModalContainer";
 import Welcome from "./pages/Welcome";

@@ -506,7 +506,7 @@ a, button, ul, li, input, p, b {
     display: none;
   }
   html {
-    font-size: 24px;
+    font-size: 24px !important;
     height: -webkit-fill-available;
   }
   #bgPlayer {
